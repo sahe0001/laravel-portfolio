@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::get('/posts/{post}', 'PostsController@show');
+Auth::routes(['register' => false, 'reset' => false]);
+
+Route::get('/home', 'HomeController@index')
+    ->name('home')
+    ->middleware('auth');
